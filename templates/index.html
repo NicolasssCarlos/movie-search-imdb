@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'main.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>IMDB Movie Search</h1>
+    <p class="sub">We're using the IMDb API to get all the data for this website. Thank you all.</p>
+    </form>
+    {% if movie %}
+        {% if error %}
+            <h5>{{ error }}</h5>
+        {% else %}
+            <section>
+                <img src="{{ poster }}" alt="cover">
+                <div class="info">
+                    <h3>{{ title }}</h3>
+                    <p>{{ genre | safe }}</p>
+                    <p>{{ year }}</p>
+                    <p>{{ actors | safe }}</p>
+                    <p>{{ director | safe }}</p>
+                    <p>{{ rating | safe }}</p>
+                </div>
+            </section>
+        {% endif %}
+    {% endif %}
+    <form method="GET">
+        <div class="sea">
+            <input type="search" name="movie" placeholder="Type here a movie to see informations about it">
+            <input type="submit" value="Search">
+        </div>
+</body>
+</html>
